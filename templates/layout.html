@@ -1,0 +1,69 @@
+<!doctype html>
+<title>Анализ эмоциональной окраски отзывов</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<style>
+        .carousel-inner {
+            max-width: 1024px;
+            margin: auto;
+            max-height: 500px; /* Высота карусели */
+        }
+
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Обрезка или масштабирование изображения */
+        }
+
+        .carousel-caption {
+            text-align: left; /* Выравнивание текста по левому краю */
+            bottom: 10%; /* Приподнять текст и кнопку вверх */
+            right: 40%; /* Центрирование по правому краю */
+            transform: translateX(0%); /* Корректировка положения */
+            background-color: rgba(0, 0, 0, 0.4); /* Небольшой фон для улучшения читаемости */
+            padding: 10px;
+        }
+		
+		textarea {
+			max-height: 1000px;
+			min-height: 200px;
+		}
+	</style>
+
+<header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">
+		<img src="{{ url_for('static', filename='images/pie-chart_5709491.png') }}" width="70" >
+	</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li {% if request.endpoint == 'index' %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+        <a class="nav-link" href="/">Главная<span class="sr-only">(current)</span></a>
+      </li>
+	  <li {% if request.endpoint == 'sentiment' %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+        <a class="nav-link" href="/sentiment">Сентимент-анализ<span class="sr-only">(current)</span></a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+</header>
+
+<section class="content">  
+  {% block content %}{% endblock %}
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+</section>
+
+<footer class="footer mt-auto py-3 bg-light">
+	<div class="container">
+		<span class="text-muted">Анализ эмоциональной окраски отзывов, 2024</span>
+		<span class="text-muted float-right">Изображения созданы storyset на Freepik</span>
+		<div class="clearfix"></div>
+	</div>
+
+</footer>

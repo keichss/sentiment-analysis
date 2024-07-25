@@ -1,0 +1,101 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="container mt-4">
+<div id="login">
+  <h3 class="text-center text-white pt-5"> </h3>
+  <div class="container">
+      <div id="login-row" class="row justify-content-center align-items-center">
+          <div id="login-column" class="col-md-11">
+              <div id="login-box" class="col-md-12">
+			  
+                  <form action="" method="post">
+                      <h3 class="text-center text-primary">Анализ тональности отзывов</h3>
+                      <div class="form-group">
+                          <textarea placeholder="Введите текст..." name="text_tonal" type="text" class="form-control"></textarea>
+                      </div>
+
+                      <div class="form-group ">
+
+                          <input type="submit" name="submit_button" class="btn btn-primary btn-md" value="Оценить">
+                      </div>
+					  
+					  {% if flag %}
+              
+          <h5 class="result-wrapper">
+            <div class="result">
+              <div class="result__left">
+                Эмоциональная окраска: {{ type_of_tonal }}
+              </div>
+              <div class="result__right">
+                Вероятность: {{ percent }}
+              </div>
+            </div>
+          </h5>
+		  <p class="result-wrapper">
+              <b>Введенный текст:</b> {{ text }}
+          </p>
+          {% endif %}
+		  {% if flag_input %}
+					<p class="result-wrapper">
+						<b>Пожалуйста, введите текст.</b>
+					</p>
+					{% endif %}
+
+
+                  </form>
+				  <hr class="featurette-divider">
+				  
+				  <form action="" method="post" enctype="multipart/form-data">
+				  <div class="form-group">
+				  <p>Вы также можете загрузить отзывы одним файлом формата .csv:</p>
+					<input type="file" name="uploaded_file" accept=".csv">
+					<input type="submit" name="upload_button" class="btn btn-primary btn-md" value="Загрузить">
+					{% if flag_file %}
+					<p class="result-wrapper">
+						<b>Файл успешно загружен.</b>
+					</p>
+					{% endif %}
+					{% if flag_enc %}
+					<p class="result-wrapper">
+						<b>Неверная кодировка, пожалуйста, убедитесь, что у вас настроена кодировка UTF-8.</b>
+					</p>
+					{% endif %}
+					{% if flag_size %}
+					<p class="result-wrapper">
+						<b>Похоже, что был загружен пустой файл.</b>
+					</p>
+					{% endif %}
+					{% if flag_empty %}
+					<p class="result-wrapper">
+						<b>Пожалуйста, загрузите файл.</b>
+					</p>
+					{% endif %}
+					</div>
+					</form>
+
+				<form action="/upload" method="post">
+				{% if flag_file %}
+				<div class="form-group ">
+					<input type="submit" name="result_button" class="btn btn-primary btn-md" value="Просмотреть результаты">
+					</div>
+					{% endif %}
+				</form>
+				
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!--<hr class="featurette-divider">
+<section id="featurette1" class="container mt-4">
+	<div class="row align-items-center">
+
+			 
+			<h4 class="featurette-heading">Памятка</h4>
+			<p class="lead">Сайт предназначен для анализа эмоциональной окраски отзывов исключительно на <strong>русском языке</strong>. Ввод отзыва на любом другом языке может привести к неверной оценке тональности.</p>
+
+	</div>
+</section>
+-->
+</div>
+{% endblock %}

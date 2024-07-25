@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% block content %}
+<section id="section-about" >
+<div class="container mt-4">
+<!-- Carousel With Indicators -->
+
+
+	<!-- Carousel items -->
+	<div class="carousel-inner">
+		<div class="carousel-item active">
+			<img src="{{ url_for('static', filename='images/desc.jpg') }}" class="d-block w-100" alt="First slide">
+			<div class="carousel-caption d-block">
+				<h5>Анализ тональности отзывов</h5>
+
+				<form action="/sentiment" method="post">
+				<input type="submit" name="link_button" class="btn btn-primary btn-md " value="Приступить">
+				
+				</form>
+			</div>
+		</div>
+
+	</div>
+
+
+<hr class="featurette-divider">
+
+
+
+<!-- Horizontal Card with image left and text right -->
+<section id="featurette1" class="container mt-4">
+	<div class="row align-items-center">
+		<div class="col-md-6">
+			<img src="{{ url_for('static', filename='images/4002785.jpg') }}" class="featurette-image img-fluid" alt="Placeholder Image">
+		</div>
+		<div class="col-md-6">
+			<!-- Text -->
+			<h2 class="featurette-heading">LSTM - нейронная сеть с долгой краткосрочной памятью</h2>
+			<p class="lead">Для решения задачи сентимент-анализа использовалась LSTM. Сети LSTM обладают преимуществами в сентимент-анализе благодаря эффективному учету долгосрочных зависимостей, моделированию последовательной информации, пониманию контекстных нюансов, обработке входных данных переменной длины и снижению необходимости в обширной разработке функций.</p>
+		</div>
+	</div>
+</section>
+
+
+<hr class="featurette-divider">
+
+<!-- Horizontal Card with image right and text left -->
+<section id="featurette2" class="container mt-4">
+	<div class="row align-items-center">
+		<div class="col-md-6">
+			<!-- Text -->
+			<h2 class="featurette-heading">Профессиональный датасет</h2>
+			<p class="lead">Обучение модели происходило на наборе данных, состоящего из 80 тысяч отзывов на русском языке. Набор данных охватывает сразу несколько областей, благодаря чему удалось достичь высокой точности определения эмоциональный окраски отзывов из разных сфер.</p>
+		</div>
+		<div class="col-md-6">
+			<img src="{{ url_for('static', filename='images/7140765_3556940.jpg') }}" class="featurette-image img-fluid" alt="...">
+		</div>
+	</div>
+</section> 
+</div>     
+</section>
+{% endblock %}
